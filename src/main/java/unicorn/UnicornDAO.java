@@ -4,6 +4,8 @@ import app.HibernateConfig;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 
+import java.util.List;
+
 public class UnicornDAO {
 
     EntityManagerFactory emf = HibernateConfigUnicorn.getEntityManagerFactoryConfig();
@@ -51,6 +53,13 @@ public class UnicornDAO {
         Unicorn unicorn = em.find(Unicorn.class, id);
         em.close();
         return unicorn;
+    }
+
+    public List<Unicorn> findAll() {
+        EntityManager em = emf.createEntityManager();
+        List<Unicorn> unicorns = em.createQuery("from Unicorn").getResultList();
+        em.close();
+        return unicorns;
     }
 
 

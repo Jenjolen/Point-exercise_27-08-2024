@@ -2,10 +2,9 @@ package unicorn;
 
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
+import lombok.*;
 
 @Entity
 @Table (name = "unicorn")
@@ -21,13 +20,15 @@ public class Unicorn {
     private int id;
 
 
-    @Column (name = "name", length = 100)
+    @Column (name = "name", length = 100, nullable = false)
     private String name;
 
     @Column (name = "age")
     private int age;
 
     @Column (name = "power_strength")
+    @Min(1)
+    @Max(100)
     private int powerStrength;
 
 

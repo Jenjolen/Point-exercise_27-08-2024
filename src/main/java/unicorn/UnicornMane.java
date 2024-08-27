@@ -10,7 +10,7 @@ public class UnicornMane {
     UnicornDAO unicornDAO = new UnicornDAO();
 
 
-    Unicorn newUnicorn = new Unicorn("Rainbow", 99, 170);
+    Unicorn newUnicorn = new Unicorn("Rainbow", 99, 85);
     Unicorn createdUnicorn = unicornDAO.save(newUnicorn);
 
     // Update
