@@ -1,4 +1,4 @@
-package app;
+package unicorn;
 
 import jakarta.persistence.EntityManagerFactory;
 import lombok.NoArgsConstructor;
@@ -11,7 +11,7 @@ import org.hibernate.service.ServiceRegistry;
 import java.util.Properties;
 
 @NoArgsConstructor(access = lombok.AccessLevel.PRIVATE)
-public class HibernateConfig {
+public class HibernateConfigUnicorn {
 
     private static EntityManagerFactory entityManagerFactory; // starter transaktioner
 
@@ -21,7 +21,7 @@ public class HibernateConfig {
 
             Properties props = new Properties();
 
-            props.put("hibernate.connection.url", "jdbc:postgresql://localhost:5432/points?currentSchema=public");
+            props.put("hibernate.connection.url", "jdbc:postgresql://localhost:5432/unicorns?currentSchema=public");
             props.put("hibernate.connection.username", "postgres");
             props.put("hibernate.connection.password", "postgres");
             props.put("hibernate.show_sql", "true"); // show sql in console
@@ -33,6 +33,7 @@ public class HibernateConfig {
             props.put("hibernate.archive.autodetection", "class"); // hibernate scans for annotated classes
             props.put("hibernate.current_session_context_class", "thread"); // hibernate current session context
             props.put("hibernate.hbm2ddl.auto", "update"); // hibernate creates tables based on entities
+            // create-drop hvis vi vil truncate vores database
 
 
             return getEntityManagerFactory(configuration, props);
@@ -58,7 +59,7 @@ public class HibernateConfig {
         // add annotated classes
         // configuration.addAnnotatedClass(<YOUR ENTITY>.class);
         //configuration.addAnnotatedClass(Person.class);
-        configuration.addAnnotatedClass(Point.class); // Vi giver Point-klassen til Hibernate, så den kn konvertere den til SQL og sætte den ind i databasen.
+        configuration.addAnnotatedClass(Unicorn.class); // Vi giver Point-klassen til Hibernate, så den kn konvertere den til SQL og sætte den ind i databasen.
     }
 
     public static EntityManagerFactory getEntityManagerFactoryConfig() {
